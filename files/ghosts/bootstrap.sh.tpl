@@ -119,16 +119,10 @@ done
 docker-compose up -d
 echo "GHOSTS Install complete"
 
-# Install Ghosts Animator
-echo "Install GHOSTS Animator"
+# npc.sh 
+echo "Get npc.sh"
 cd /home/ubuntu
-git clone https://github.com/cmu-sei/GHOSTS-ANIMATOR
-cd GHOSTS-ANIMATOR/src
-sudo docker build . -t ghosts/animator
-# change listening port to be 5001
-sed -i 's/5000:5000/5001:5001/g' docker-compose.yml
-# download animator appsettings.json
-file="appsettings.json"
+file="npc.sh"
 object_url="https://${s3_bucket}.s3.${region}.amazonaws.com/$file"
 echo "Downloading s3 object url: $object_url"
 for i in {1..5}
@@ -143,6 +137,22 @@ do
         echo "Download failed. Retrying..."
     fi
 done
-docker compose up -d
+chmod +x /home/ubuntu/npc.sh
+echo "Get npc.sh complete"
+
+### Begin adding NPCs section
+echo "Begin adding NPCs"
+echo "sleep to make sure API server is ready"
+sleep 30
+
+# generate one npc
+echo "Run api /api/npcsgenerate/one"
+echo "Generate random NPC by random service branch"
+request1="http://127.0.0.1:5000/api/npcsgenerate/one"
+curl -X 'POST' \
+  "$request1" \
+  -H 'accept: application/json' \
+  -d ''
+echo "Request complete to api endpoint at /api/npcsgenerate/one" 
 
 echo "End of bootstrap script"

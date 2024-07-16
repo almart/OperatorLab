@@ -1,7 +1,19 @@
 
+locals {
+  # This is the npc.sh script to call from remote
+  npc_ext_sh = templatefile("${path.module}/files/ghosts/npc-ext.sh.tpl", {
+    public_ip = aws_instance.ghosts_server.public_ip
+  })
+}
+
+resource "local_file" "npc_ext_sh" {
+  content  = local.npc_ext_sh
+  filename = "${path.module}/output/ghosts/npc-ext.sh"
+}
+
 variable "ghosts_server_instance_type" {
   description = "The AWS instance type to use for servers."
-  default     = "t2.micro"
+  default     = "t3a.medium"
 }
 
 variable "ghosts_root_block_device_size" {
@@ -163,26 +175,25 @@ resource "aws_instance" "ghosts_server" {
 output "Ghosts_server_details" {
   value = <<CONFIGURATION
 ----------------
-Grafana Console:
+GHOSTS Grafana Console:
 ----------------
-http://${aws_instance.ghosts_server.public_ip}:3000
+http://${aws_instance.ghosts_server.public_dns}:3000
 
-Grafana Credentials:
+GHOSTS Grafana Credentials:
 --------------------
 admin:admin
 
-API Server
-----------
-API: http://${aws_instance.ghosts_server.public_ip}:5000
+GHOSTS API Server
+-----------------
+http://${aws_instance.ghosts_server.public_dns}:5000
 
-SSH
----
-ssh -i ssh_key.pem ubuntu@${aws_instance.ghosts_server.public_ip}  
+SSH to GHOSTS
+--------------
+ssh -i ssh_key.pem ubuntu@${aws_instance.ghosts_server.public_ip}
 
 
 CONFIGURATION
 }
-
 resource "aws_s3_object" "ghosts_docker_compose" {
   bucket = aws_s3_bucket.staging.id
   key    = "docker-compose.yml"

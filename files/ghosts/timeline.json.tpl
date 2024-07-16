@@ -1,133 +1,75 @@
 {
-  "Id": "828f866c-a113-4fe2-ba3e-f600ebcd9009",
   "Status": "Run",
   "TimeLineHandlers": [
-    {
-      "HandlerType": "Watcher",
-      "Initial": "",
-      "UtcTimeOn": "00:00:00",
-      "UtcTimeOff": "24.00:00:00",
-      "HandlerArgs": {},
-      "Loop": true,
-      "TimeLineEvents": [
-        {
-          "TrackableId": null,
-          "Command": "folder",
-          "CommandArgs": [
-            "path:%HOMEDRIVE%%HOMEPATH%\\Downloads",
-            "size:2000",
-            "deletionApproach:oldest"
-          ],
-          "DelayAfter": 0,
-          "DelayBefore": 0
-        }
-      ],
-      "ScheduleType": "Other",
-      "Schedule": null
-    },
     {
       "HandlerType": "Command",
       "Initial": "",
       "UtcTimeOn": "00:00:00",
-      "UtcTimeOff": "24.00:00:00",
-      "HandlerArgs": {},
-      "Loop": true,
+      "UtcTimeOff": "24:00:00",
+      "Loop": "False",
       "TimeLineEvents": [
         {
-          "TrackableId": null,
-          "Command": "DIR /P /Q /R /S /W /4 \\\\file-server\\reports",
+          "Command": "DIR c:\\",
           "CommandArgs": [
-            "exit"
           ],
           "DelayAfter": 900000,
           "DelayBefore": 0
         }
-      ],
-      "ScheduleType": "Other",
-      "Schedule": null
+      ]
     },
     {
       "HandlerType": "Word",
       "Initial": "",
       "UtcTimeOn": "00:00:00",
-      "UtcTimeOff": "24.00:00:00",
+      "UtcTimeOff": "24:00:00",
       "HandlerArgs": {
         "workingset": {
           "max": 20,
           "max-age-in-hours": 72
         }
       },
-      "Loop": true,
+      "Loop": "True",
       "TimeLineEvents": [
         {
-          "TrackableId": null,
           "Command": "create",
-          "CommandArgs": [
-            "%homedrive%%homepath%\\Documents",
-            "pdf",
-            "pdf-vary-filenames",
-            "save-array:['c:\\tmp','c:\\tmp\\path2','c:\\tmp\\path3']"
-          ],
+          "CommandArgs": [ "%homedrive%%homepath%\\Documents", "pdf", "pdf-vary-filenames", "save-array:['c:\\tmp','c:\\tmp\\path2','c:\\tmp\\path3']" ],
           "DelayAfter": 900000,
           "DelayBefore": 0
         }
-      ],
-      "ScheduleType": "Other",
-      "Schedule": null
+      ]
     },
     {
       "HandlerType": "Excel",
       "Initial": "",
       "UtcTimeOn": "00:00:00",
-      "UtcTimeOff": "24.00:00:00",
-      "HandlerArgs": {},
-      "Loop": true,
+      "UtcTimeOff": "24:00:00",
+      "Loop": "True",
       "TimeLineEvents": [
         {
-          "TrackableId": null,
           "Command": "create",
-          "CommandArgs": [
-            "%homedrive%%homepath%\\Documents",
-            "pdf",
-            "pdf-vary-filenames",
-            "save-array:['c:\\tmp','c:\\tmp\\path2','c:\\tmp\\path3']"
-          ],
+          "CommandArgs": [ "%homedrive%%homepath%\\Documents", "pdf", "pdf-vary-filenames", "save-array:['c:\\tmp','c:\\tmp\\path2','c:\\tmp\\path3']" ],
           "DelayAfter": 900000,
           "DelayBefore": 0
         }
-      ],
-      "ScheduleType": "Other",
-      "Schedule": null
+      ]
     },
     {
       "HandlerType": "PowerPoint",
       "Initial": "",
       "UtcTimeOn": "00:00:00",
-      "UtcTimeOff": "24.00:00:00",
-      "HandlerArgs": {},
-      "Loop": true,
+      "UtcTimeOff": "24:00:00",
+      "Loop": "True",
       "TimeLineEvents": [
         {
-          "TrackableId": null,
           "Command": "create",
-          "CommandArgs": [
-            "%homedrive%%homepath%\\Documents",
-            "pdf",
-            "pdf-vary-filenames",
-            "save-array:['c:\\tmp','c:\\tmp\\path2','c:\\tmp\\path3']"
-          ],
+          "CommandArgs": [ "%homedrive%%homepath%\\Documents", "pdf", "pdf-vary-filenames", "save-array:['c:\\tmp','c:\\tmp\\path2','c:\\tmp\\path3']" ],
           "DelayAfter": 900000,
           "DelayBefore": 0
         }
-      ],
-      "ScheduleType": "Other",
-      "Schedule": null
+      ]
     },
     {
       "HandlerType": "BrowserFirefox",
-      "Initial": "about:blank",
-      "UtcTimeOn": "00:00:00",
-      "UtcTimeOff": "24.00:00:00",
       "HandlerArgs": {
         "isheadless": "false",
         "blockimages": "false",
@@ -137,51 +79,25 @@
         "stickiness": "65",
         "stickiness-depth-min": "3",
         "stickiness-depth-max": "15",
-        "incognito": "true",
+        "incognito": "false",
         "javascript-enable": "true",
         "visited-remember": "10",
         "actions-before-restart": 100,
-        "command-line-args": [
-          "--ignore-certificate-errors"
-        ],
+        "command-line-args": [ "--ignore-certificate-errors" ],
         "url-replace": [
-          {
-            "verb": [
-              "order",
-              "enable",
-              "engage"
-            ]
-          },
-          {
-            "group": [
-              "operations",
-              "logistics",
-              "medical"
-            ]
-          },
-          {
-            "org": [
-              "army",
-              "command",
-              "brigade",
-              "battalion"
-            ]
-          },
-          {
-            "type": [
-              "document",
-              "doc",
-              "files",
-              "vault",
-              "filevault"
-            ]
-          }
+          { "verb": [ "order", "enable", "engage" ] },
+          { "group": [ "operations", "logistics", "medical" ] },
+          { "org": [ "army", "command", "brigade", "battalion" ] },
+          { "type": [ "document", "doc", "files", "vault", "filevault" ] }
         ]
       },
-      "Loop": true,
+      "Initial": "about:blank",
+      "UtcTimeOn": "00:00:00",
+      "UtcTimeOff": "24:00:00",
+      "UtcTimeBlocks": [ "00:00:00", "23:59:00" ],
+      "Loop": "True",
       "TimeLineEvents": [
         {
-          "TrackableId": null,
           "Command": "random",
           "CommandArgs": [
             "http://craigslist.org/{org}/{group}/{uuid}/{verb}/{type}/{n}?{c}={now}",
@@ -703,50 +619,14 @@
               "Method": "DELETE"
             }
           ],
-          "DelayAfter": 300000,
+          "DelayAfter": {
+            "random": true,
+            "min": 5000,
+            "max": 3000000
+          },
           "DelayBefore": 0
         }
-      ],
-      "ScheduleType": "Other",
-      "Schedule": null
-    },
-    {
-      "HandlerType": "BrowserChrome",
-      "Initial": "about:blank",
-      "UtcTimeOn": "00:00:00",
-      "UtcTimeOff": "24.00:00:00",
-      "HandlerArgs": {
-        "isheadless": "false",
-        "blockimages": "true",
-        "blockstyles": "true",
-        "blockflash": "true",
-        "blockscripts": "true",
-        "stickiness": 75,
-        "stickiness-depth-min": 5,
-        "stickiness-depth-max": 10000,
-        "incognito": "true",
-        "blog-credentials-file": "c:\\ghosts_data\\sharepoint_creds.json",
-        "blog-deletion-probability": 0,
-        "blog-upload-probability": 0,
-        "blog-browse-probability": 0,
-        "blog-reply-probability": 100,
-        "blog-version": "drupal"
-      },
-      "Loop": true,
-      "TimeLineEvents": [
-        {
-          "TrackableId": null,
-          "Command": "blog",
-          "CommandArgs": [
-            "site:http://www.netexhsv.com:8080",
-            "credentialKey:credkey1"
-          ],
-          "DelayAfter": 10000,
-          "DelayBefore": 0
-        }
-      ],
-      "ScheduleType": "Other",
-      "Schedule": null
+      ]
     }
   ]
 }
